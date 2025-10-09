@@ -2,333 +2,612 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ASRS Automation Technologies Pvt. Ltd" />
-  <title>ASRS — Automation & Services</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A K ENTERPRISES" />
+  <title>A K ENTERPRISES</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <style>
     /* ----- Root / Base ----- */
-    :root {
-      --bg: #f6f8fb;
-      --card: #ffffff;
-      --accent: #0b5cff;
-      --muted: #6b7280;
-      --dark: #0b1220;
-      --glass: rgba(255, 255, 255, 0.6);
-      --maxw: 1200px;
-      --radius: 12px;
-    }
+    
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      height: 100%;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      color: var(--dark);
-      background: linear-gradient(180deg, #f6f8fb, #eef4ff);
-      transition: all 0.3s ease;
-      scroll-behavior: smooth;
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --accent:#0b5cff;
+      --glass: rgba(255,255,255,0.6);
+      --max:1200px;
+      --radius:12px;
     }
-
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; border-radius: 8px; }
+    html,body{margin:0px;height:auto;padding:0px;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:#fff;transition:all 0.3s ease}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
 
     /* ----- Utilities ----- */
-    .container {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .muted { color: var(--muted); font-size: 14px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 0;
-      text-align: center;
-    }
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 24px;padding-left: 16px;padding-right: 16px}
+    .row{display:flex;gap:18px; align-items:center; justify-content: center;}
+    .muted{color:var(--muted);font-size:14px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;font-weight:600;cursor:pointer;border:0}
     .btn-primary {
       background: linear-gradient(90deg, var(--accent), #3b82f6);
       color: #fff;
-      box-shadow: 0 8px 24px rgba(11, 92, 255, 0.12);
+      box-shadow: 0 8px 24px rgba(11,92,255,0.12);
+      background-color: #0af;
+    }
+    .btn-primary:hover {
+      background-color: #08c;
+      color: #fff;
     }
     .btn-outline {
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
+      background-color: transparent;
+      border: 2px solid #0af;
+      color: #0af;
     }
+    /* Duplicate .btn-outline:hover removed to fix selector error */
 
     /* ----- Header ----- */
-    header.site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(11, 92, 255, 0.06);
-    }
+    /* ----- Header Styles ----- */
+ /* ----- General Header ----- */
 
-    .nav-row {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.site-header {
+  background-color: #1257e0;
+  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
 
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    .brand img {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-    }
+/* ----- Brand ----- */
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
 
-    nav.main-nav {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
+.brand img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-right: 15px;
+  box-shadow: 0 4px 10px rgba(11,92,255,0.3);
+  transition: transform 0.3s ease;
+}
 
-    nav.main-nav a {
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      color: var(--dark);
-      transition: background 0.3s;
-    }
+.brand img:hover {
+  transform: scale(1.1);
+}
 
-    nav.main-nav a:hover {
-      background: rgba(11, 92, 255, 0.08);
-      color: var(--accent);
-    }
+.brand-name {
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
 
-    .mobile-toggle {
-      display: none;
-      background: transparent;
-      border: 0;
-      font-size: 26px;
-      cursor: pointer;
+/* ----- Navigation Menu ----- */
+
+/* Hamburger Button */
+/* Removed duplicate .menu-toggle selector to fix error */
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #00a8ff;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+/* site-nav modifications */
+
+/* Desktop/Laptop View - Header Navigation */
+.site-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background: transparent;
+    position: relative;
+}
+
+.site-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.site-nav a:hover {
+    color: #00a8ff;
+}
+
+/* Hide hamburger on desktop */
+.menu-toggle {
+    display: none;
+}
+
+/* Mobile View - Hamburger Menu */
+@media (max-width: 768px) {
+    
+    /* Show hamburger button */
+    .menu-toggle {
+        display: block;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
     }
+    
+    .menu-toggle span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background: #00a8ff;
+        margin: 6px 0;
+        transition: 0.3s;
+    }
+    
+    /* Mobile navigation - sidebar */
+    .site-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: rgba(10, 25, 47, 0.98);
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .site-nav.active {
+        right: 0;
+    }
+    
+    .site-nav a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+}
+
+/* Hamburger Button */
+/* Duplicate .site-nav a:hover selector removed */
+
+/* ----- Dropdown Menu ----- */
+.site-nav li {
+  position: relative;
+}
+
+.site-nav .dropdown {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: #0b1220;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.site-nav .dropdown li {
+  padding: 0;
+}
+
+.site-nav .dropdown a {
+  display: block;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+.site-nav li:hover .dropdown {
+  display: block;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .nav-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .site-nav .dropdown {
+    position: relative;
+    top: 0;
+    left: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
+
+/* Responsive - small screens */
+@media (max-width: 600px) {
+  .brand img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .brand-name div {
+    font-size: 1.2rem;
+  }
+}
+   /* ----- Hero ----- */
+
+   /* Background video setup */
+ /* ===== Reset ===== */
+/* Duplicate universal selector removed to fix error */
+
+body {
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* fallback for desktop */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.hero-left {
+  position: relative;
+  z-index: 2;
+  padding-left: 10%;
+}
+
+.hero-left h2 {
+  font-size: 3rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+/* Responsive fallback */
+@media (max-width: 768px) {
+  .hero-left h2 { font-size: 2rem; text-align: center; }
+  .hero { height: auto; min-height: 20vh; }
+}
+
+/* ===== Overlay (for dark effect) ===== */
+
 
     /* ----- Hero Section ----- */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 24px;
-      align-items: center;
-      padding: 60px 0;
-      background-image: url("images/Muneesh1.jpg");
-      background-size: cover;
-      background-position: center;
-      border-radius: 12px;
-      color: #0b1220;
-    }
 
-    .hero-left h2 {
-      font-size: 40px;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
+.btn-outline:hover {
+  background-color: #0af;
+  color: #0b1220;
+}
 
-    .hero-left p.lead {
-      color: var(--muted);
-      margin-bottom: 20px;
-      max-width: 640px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .hero-right {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 12px 28px rgba(9, 30, 66, 0.05);
-    }
-
-    .search-box {
-      display: flex;
-      gap: 8px;
-      background: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      align-items: center;
-      box-shadow: 0 8px 20px rgba(16, 24, 40, 0.06);
-      margin-bottom: 14px;
-    }
-
-    .search-box input {
-      border: 0;
-      outline: none;
-      padding: 8px;
-      font-size: 14px;
-      width: 100%;
-    }
-
-    .search-box button {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 0;
-      background: var(--accent);
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .service-item {
-      background: #fff;
-      padding: 12px;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(11, 92, 255, 0.03);
-      font-size: 14px;
-    }
-
-    .service-item strong { display: block; margin-bottom: 6px; }
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .hero-left h2 {
+    font-size: 2rem;
+  }
+  .hero-left p.lead {
+    font-size: 1rem;
+  }
+}
 
     /* ----- Services Section ----- */
-    section.services {
-      padding: 50px 0;
-    }
+.services {
+  padding: 60px 20px;
+  background-color: #f6f8fb;
+  text-align: center;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-    }
+.services h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #0b1220;
+}
 
-    .card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 12px 30px rgba(11, 92, 255, 0.05);
-      text-align: center;
-    }
+/* First image section */
 
-    .card h3 { margin: 10px 0 6px; }
+.firstimage{
+  width: 200px;
+  height: auto;
+  margin: 20px auto;
+  overflow: hidden;
+  display: flex;
+  place-items: center;
+  align-items: center;
+  justify-content: center; 
+}
+.firstimage img{
+  width: 100%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+@media (max-width: 600px) {
+  .firstimage {
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+  }
+  .firstimage img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+/* ----- Cards Container ----- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;      /* Space between cards */
+  justify-items: center; /* Center cards horizontally */
+  align-items: stretch;
+}
+
+/* ----- Individual Card ----- */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #0b1220;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ----- Fade-Up Animation ----- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
 
     /* ----- Team ----- */
-    section.team {
-      padding: 50px 0;
-    }
+  
+    section.team{padding:40px 0}
+    .team-grid{display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap: wrap;}
+    .slider {
+  position: relative;    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* buttons ke beech thoda gap */
+}
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-    }
+/* Slider buttons style (optional) */
+.slider button {
+  background: #444;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  z-index: 10;
+  font-size: 24px;
+  border: none;
+  border-radius: 6px;
+  padding: 15px 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+button.prev {
+  left: 10px;
+}
 
-    .member {
-      background: #fff;
-      padding: 14px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(11, 92, 255, 0.03);
-    }
+button.next {
+  right: 10px;
+}
+button.prev:hover,button.next:hover {
+  background: rgba(255,255,255,0.6);
+  color: #fff;
+}
 
-    .member img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
+/* Slider image style */
+#sliderImg {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(11,92,255,0.03);
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+}
+    .member{background:#444;padding:14px;border-radius:12px;text-align:center;box-shadow:0 8px 20px rgba(11,92,255,0.03)}
+    .member img{width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+  
 
     /* ----- Contact ----- */
-    section.contact {
-      padding: 60px 0;
+    section.contact{padding:48px 0}
+    @media(max-width: 980px){
+    .contact-grid{display:grid;grid-template-columns: 1fr;gap: 16px;align-items:start;padding:0 16px}
+    .contact-grid form,
+  .contact-grid aside {
+    width: 100%; /* Full width for mobile */
+  }
+
+  .contact-grid input,
+  .contact-grid textarea {
+    width: 100%; /* Full width input fields */
+  }
+    }
+    .form-control{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+    input,textarea{padding:12px;border-radius:8px;border:1px solid rgba(11,92,255,0.08);outline:none}
+    input:focus,textarea:focus{box-shadow:0 6px 18px rgba(11,92,255,0.08);border-color:var(--accent)}
+    textarea{min-height:120px;resize:vertical}
+
+    /* ----- Futuristic Form Button ----- */
+
+    .futuristic-form{
+  text-align: center; /* Center the button */
+  margin-top: 20px; /* Top margin for spacing */
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .form-control {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid rgba(11, 92, 255, 0.1);
-      outline: none;
-    }
-
-    input:focus, textarea:focus {
-      box-shadow: 0 6px 18px rgba(11, 92, 255, 0.1);
-      border-color: var(--accent);
-    }
-
-    textarea { min-height: 120px; resize: vertical; }
+.futuristic-form a {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #0b5cff, #3b82f6);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 30px;
+  box-shadow: 0 8px 24px rgba(11,92,255,0.12);
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;   
+}
 
     /* ----- Footer ----- */
+
     footer {
-      padding: 32px 0;
-      background: #0f1724;
-      color: #fff;
-      border-top-left-radius: 18px;
-      border-top-right-radius: 18px;
-      margin-top: 40px;
-    }
+  background-color: #222; /* Footer ka background */
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center; /* text center align */
+}
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-    }
+.footer-grid {
+  display: flex;
+  flex-direction: column; /* Column me items by default */
+  align-items: center;    /* Center horizontally */
+  gap: 20px;              /* Grid items ke beech gap */
+}
 
-    footer a { color: #93c5fd; }
+/* Quick links aur contact text color */
+.footer-grid .muted a {
+  color: #fff;
+  text-decoration: none;
+  margin: 2px 0;
+  display: inline-block;
+}
+
+/* Hover effect for links */
+.footer-grid .muted a:hover {
+  text-decoration: underline;
+  color: #0af;
+}
+
+/* Responsive - large screens me row layout */
+@media (min-width: 768px) {
+  .footer-grid {
+    flex-direction: row;      /* Items side by side */
+    justify-content: center;  /* Center horizontally */
+    text-align: left;         /* Text left aligned in each box */
+  }
+  .footer-grid > div {
+    margin: 0 20px;           /* Items ke beech spacing */
+  }
+}
+
+/* Footer Nav */
+.footernav a {
+      font-size:20px;
+}
+
 
     /* ----- Responsive ----- */
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; padding: 40px 20px; }
-      nav.main-nav {
-        display: none;
-        position: absolute;
-        right: 20px;
-        top: 72px;
-        background: #fff;
-        padding: 12px;
-        border-radius: 10px;
-        flex-direction: column;
-        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.1);
-      }
-      nav.main-nav.show { display: flex; }
-      .mobile-toggle { display: block; }
-      .contact-grid { grid-template-columns: 1fr; }
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .mobile-toggle{display:block}
+      nav.main-nav{display:none;position:absolute;right:20px;top:72px;background:linear-gradient(90deg,white, #f0f6ff);padding:12px;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.08)}
+      nav.main-nav.show{display:flex;flex-direction:column}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .hero-left h1{font-size:28px}
+      .hero-right{order:2}
     }
 
-    @media (max-width: 560px) {
-      .hero-left h2 { font-size: 28px; }
-      .hero { padding: 40px 10px; }
-      .container { padding: 0 14px; }
-    }
+    /* ----- Small animations ----- */
+    /* Duplicate .fade-up selector removed to fix error */
+    @keyframes fadeUp{to{opacity:1;transform:none}}
 
-    /* ----- Dark Mode ----- */
-    :root {
-      --dark-bg: #0b1220;
-      --dark-card: #1a1f2b;
-      --dark-text: #f3f4f6;
-      --dark-accent: #3b82f6;
-    }
+    /* ----- Dark Mode Toggle ----- */
 
     body.dark-mode {
       background: var(--dark-bg);
@@ -336,8 +615,8 @@
     }
 
     body.dark-mode header.site-header {
-      background: rgba(18, 24, 36, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(18,24,36,0.85);
+      border-bottom:1px solid rgba(255,255,255,0.1);
     }
 
     body.dark-mode .card,
@@ -349,180 +628,221 @@
       color: var(--dark-text);
     }
 
+    body.dark-mode .btn-primary {
+      background: linear-gradient(90deg, var(--dark-accent), #0b5cff);
+      color: #fff;
+    }
+
+    body.dark-mode nav.main-nav a {
+      color: #f3f4f6;
+    }
+
     body.dark-mode nav.main-nav a:hover {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255,255,255,0.05);
       color: var(--dark-accent);
     }
 
-    #darkToggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 55px;
-      height: 28px;
-      border-radius: 30px;
-      background: var(--accent);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      padding: 3px;
-      transition: all 0.3s ease;
-      z-index: 100;
-    }
+    /* ---- Fix for mobile overflow ---- */
+.hero-banner {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden; /* agar zaroori ho */
+  padding-inline: 16px; /* agar content chipa hua ho */
+}
 
-    #darkToggle::before {
-      content: '';
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #fff;
-      transition: all 0.3s ease;
-    }
+section {
+  padding-left: 16px;
+  padding-right: 16px;
+}
 
-    body.dark-mode #darkToggle::before {
-      transform: translateX(27px);
-      background: #111827;
-    }
   </style>
 </head>
-
 <body>
-  <div id="darkToggle" aria-label="Toggle dark mode"></div>
 
   <!-- HEADER -->
-  <header class="site-header">
-    <div class="container nav-row">
-      <a class="brand" href="#">
-        <img src="Logo.png" alt="ASRS Logo" />
-        <div><strong>ASRS Technologies Pvt. Ltd</strong></div>
-      </a>
+  <header class="site-header" role="banner">
+  <div class="container nav-row">
+    <a class="brand" href="#" aria-label="A K ENTERPRISES">
+      <img src="Logo.png" alt="A K ENTERPRISES" loading="lazy">
+      <div class="brand-name">A K ENTERPRISES</div>
+    </a>
+    
+   <!-- Hamburger Button -->
+<button class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false">☰</button>
+<!-- Your existing navigation -->
+<nav class="site-nav" id="siteNav">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+  </div>
+</header>
 
-      <nav class="main-nav" id="mainNav">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
   <!-- HERO -->
   <main>
-    <section class="container hero">
-      <div class="hero-left">
-        <p class="muted"><strong>ASRS INSTALLATION SERVICE — Jaipur, Rajasthan</strong></p>
-        <h2>Broad Vision<br>Honest Service<br>Great Value</h2>
-        <p class="lead">We design, install, and maintain automated material handling solutions — ASRS, conveyors, cranes, palletizers, and turnkey automation for manufacturing & distribution.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact">Get a Quote</a>
-          <a class="btn btn-outline" href="#services">Our Services</a>
-        </div>
-      </div>
+    <!-- HERO -->
+<section class="container hero" aria-labelledby="hero-heading">
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="hero-video" aria-describedby="video-desc">
+    <source src="file.mp4" type="video/mp4">
+    <track kind="subtitles" src="background.vtt" srclang="en" label="English Subtitles" default>
+    Your browser does not support the video tag.
+  </video>
+  <div id="video-desc" style="display:none;">
+    <a href="background-desc.txt">Video Description File</a>
+  </div>
 
-      <aside class="hero-right">
-        <div class="search-box">
-          <input type="search" placeholder="What are you looking for?" />
-          <button>Search</button>
-        </div>
-        <div class="service-grid">
-          <div class="service-item"><strong>Mechanical</strong>Installations & structural works</div>
-          <div class="service-item"><strong>Electrical</strong>Panels, cabling, drives</div>
-          <div class="service-item"><strong>Project Ref.</strong>ASRS & Conveyors</div>
-          <div class="service-item"><strong>Turnkey</strong>End-to-end automation</div>
-        </div>
-      </aside>
+  <!-- Content overlay -->
+  <div class="hero-overlay"></div>
+
+  <div class="hero-left">
+    <h2 id="hero-heading">Broad Vision <br> Honest Service <br> Great Value</h2>
+  </div>
+</section>
+  
+ <section class="">
+  <div class="automation">
+    <h2 style="text-align:center;object-fit:cover">A K ENTERPRISES</h2>
+    <br><h3><strong>Where We Build Your Visions</strong></h3><br></br>
+
+Write a warm welcoming message for visitors. You can mention all the benefits or services with some real examples. You can also state how you emphasize on their well being. This often shows your concern and increases the chances of conversion.
+
+Tell people a little more to attract. You can mention some contact details as shown below to get in touch with visitors. A K Enterprises - Delivering Excellence Across India.</p>
+  </div>
+ </section>    
+
+
+    <!--Number call-->
+
+    <div class="row" style="gap:8px; margin-bottom:20px; margin-top:20px">
+        <a class="btn btn-primary" href="tel:+91 7417096580">Call Us: +91 7417096580</a>
+    </div>
+
+<!--First Image-->
+
+    <section>
+      <div class="firstimage" style="gap:8px; margin-bottom:20px; margin-top:20px"> <img src="firstphoto.avif">
+    </div>
     </section>
-
+    
     <!-- SERVICES -->
-    <section id="services" class="services container">
-      <h2 style="text-align:center">Our Value Added Services</h2>
+    <section id="services" class="services container" aria-labelledby="svc-h">
+      <h2 id="svc-h" style="text-align:center">Our Value Added Services</h2>
+    
       <div class="cards" style="margin-top:18px">
-        <div class="card"><h3>Control Technology</h3><p class="muted">PLC / SCADA / HMI integration.</p></div>
-        <div class="card"><h3>Commissioning</h3><p class="muted">System bring-up & testing.</p></div>
-        <div class="card"><h3>Annual Maintenance</h3><p class="muted">AMC & tailored support contracts.</p></div>
-        <div class="card"><h3>Structural Works</h3><p class="muted">Racks & installations.</p></div>
-        <div class="card"><h3>Local MHE</h3><p class="muted">Material handling equipment supply.</p></div>
-        <div class="card"><h3>Project Support</h3><p class="muted">Design & project management.</p></div>
+      
+        <div class="card fade-up control"><h3>Control Technology</h3><img src="control.avif"></div>
+        <div class="card fade-up"><h3>Project Development and Support</h3><img src="Metal.avif"></div>
+        <div class="card fade-up"><h3>Metal and Steel Construction</h3><img src="Technical.avif"></div>
+        <div class="card fade-up"><h3>Commissioning</h3><img src="annual.avif"></div>
+        <div class="card fade-up"><h3>Turnkey  Tire Handling Automation</h3><img src="yaseenphoto.jpg"></div>
+        <div class="card fade-up"><h3>Turnkey Automated Bag palletizer Solution</h3><img src="local.avif"></div>
+        <div class="card fade-up"><h3>Fire Fighting Manpower</h3><img src="hydrant.jpg"></div>
+        <div class="card fade-up"><h3>Local material handling Equipment</h3><img src="localmaterial.jpg" alt="Workers in safety gear operating fire fighting equipment in an industrial setting, surrounded by machinery and safety signs, focused and alert"></div>
       </div>
     </section>
 
     <!-- TEAM -->
-    <section id="about" class="team container">
-      <h2 style="text-align:center">Our Team</h2>
+    <section id="about" class="team container" aria-labelledby="team-h">
+      <h2 id="team-h" style="text-align:center">Our Team</h2>
       <div class="team-grid" style="margin-top:18px">
-        <div class="member"><img src="Muneesh1.jpg" alt="Debajit - Head Projects"><strong>Debajit</strong><div class="muted">Head - Projects</div></div>
-        <div class="member"><img src="https://via.placeholder.com/400x300.png?text=Manager" alt="Manager"><strong>Manager</strong><div class="muted">Business Development</div></div>
-        <div class="member"><img src="https://via.placeholder.com/400x300.png?text=Engineer" alt="Mechanical Lead"><strong>Engineer</strong><div class="muted">Mechanical Lead</div></div>
-        <div class="member"><img src="https://via.placeholder.com/400x300.png?text=Engineer" alt="Electrical Lead"><strong>Engineer</strong><div class="muted">Electrical Lead</div></div>
+        <div class="slider">
+  <button class="prev" onclick="changeSlide(-1)">❮</button>
+  <img id="sliderImg" src="yaseenphoto.jpg" alt="Team Member" style="width:auto;border-radius:12px;box-shadow:0 8px 20px rgba(11,92,255,0.03);height:auto;max-height:300px;object-fit:cover">
+  <button class="next" onclick="changeSlide(1)">❯</button>
+</div>
+
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact container">
-      <h2 style="text-align:center">Get in Touch</h2>
-      <p style="text-align:center" class="muted">Reach out easily to discuss your automation needs — we’re here to help!</p>
-      <div class="contact-grid" style="margin-top:18px">
-        <form id="contactForm">
-          <div class="form-control"><label>Name*</label><input id="fname" required placeholder="Your Name"></div>
-          <div class="form-control"><label>Email*</label><input id="email" type="email" required placeholder="you@example.com"></div>
-          <div class="form-control"><label>Phone*</label><input id="phone" required placeholder="+91 74170 96580"></div>
-          <div class="form-control"><label>Message*</label><textarea id="message" required placeholder="Describe your project"></textarea></div>
-          <div style="display:flex;gap:12px;align-items:center">
-            <button class="btn btn-primary" type="submit">Send</button>
-            <div id="formMsg" class="muted"></div>
-          </div>
-        </form>
+    <section id="contact" class="contact container" aria-labelledby="contact-h">
+      <h2 id="contact-h" style="text-align:center;margin-bottom:20px;">Get in Touch</h2>
+      <p id="contact-h" style="text-align:center"><strong>Add a couple of lines that tell users how easily they can get in touch with you.<br> People prefer services where they can contact providers right away.</strong><br>
+      
 
-        <aside>
-          <h3>Contact Info</h3>
-          <p class="muted">📞 +91 7417096580</p>
-          <p class="muted">✉️ muneeshkhan8466@gmail.com</p>
-          <p class="muted">📍 Jaipur, Rajasthan</p>
-        </aside>
-      </div>
-    </section>
+        <!--Contact-->
+
+      <div class="futuristic-form"><a href="contact.html" style="text-decoration: underline;"><h2>Contact Us</h2></a>
+</div>  
+</p>
   </main>
 
   <!-- FOOTER -->
-  <footer>
+  <footer role="contentinfo">
     <div class="container footer-grid">
-      <div><h3>ASRS</h3><p class="muted">Partner in automation services.</p></div>
-      <div><h4>Quick Links</h4><div class="muted"><a href="#services">Services</a><br><a href="#contact">Contact</a><br><a href="#about">About us</a></div></div>
-      <div><h4>Contact</h4><p class="muted">T: +91 7417096580</p><p class="muted">E: muneeshkhan8466@gmail.com</p></div>
+      <div><h2>A K ENTERPRISES</h2></div>
+
+      <div><h4 style="margin:0 0 8px;color:#fff;font-size:30px">Quick Links</h4><div class="muted">
+        <div class="footernav">
+        <a href="#">Home</a><br>
+        <a href="#about">About us</a><br>
+        <a href="#services">Services</a><br>
+        <a href="#projects">Projects</a><br>
+        <a href="#contact">Contact</a></div></div></div>
+
+      <div><h4 style="margin:0 0 8px;color:#fff;font-size:30px">Contact</h4><p style="font-size:20px">T: +91 7417096580</p><p style="font-size:20px">E: yaseenkhan@gmail.com</p><p class="muted">A K ENTERPRISES, Jaipur, Rajasthan
+</p></div>
     </div>
   </footer>
 
   <script>
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mainNav = document.getElementById('mainNav');
-    mobileToggle.addEventListener('click', () => {
-      const isShown = mainNav.classList.toggle('show');
-      mobileToggle.setAttribute('aria-expanded', String(isShown));
-    });
+//slider get 
+let images = ['yaseenphoto.jpg', 'control.avif', 'local.avif'];
+let currentIndex = 0;
 
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = fname.value.trim(), email = email.value.trim(), phone = phone.value.trim(), msg = message.value.trim();
-      const out = document.getElementById('formMsg');
-      if (!name || !email || !phone || !msg) {
-        out.textContent = '⚠️ Please fill all required fields.'; out.style.color = 'crimson'; return;
-      }
-      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        out.textContent = '⚠️ Invalid email.'; out.style.color = 'crimson'; return;
-      }
-      out.textContent = '✅ Message sent (demo).'; out.style.color = 'green'; form.reset();
-    });
+//Toggle button
 
-    const darkToggle = document.getElementById('darkToggle');
-    darkToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+function toggleMenu() {
+    const siteNav = document.getElementById('siteNav');
+    siteNav.classList.toggle('active');
+}
+
+// Close menu when clicking on any link
+document.querySelectorAll('.site-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('siteNav').classList.remove('active');
     });
-    if (localStorage.getItem('darkMode') === 'enabled') document.body.classList.add('dark-mode');
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (event) => {
+    const siteNav = document.getElementById('siteNav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    // Check if click is outside menu and toggle button
+    if (!siteNav.contains(event.target) && !menuToggle.contains(event.target)) {
+        siteNav.classList.remove('active');
+    }
+});
+
+//Background video
+
+
+// Update on resize
+window.addEventListener('resize', setHeroHeight);
+
+function changeSlide(direction) {
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = images.length - 1;
+  if (currentIndex >= images.length) currentIndex = 0;
+  document.getElementById('sliderImg').src = images[currentIndex];
+}
+
+
+    // Mobile nav toggle
+    // Removed unused mobile navigation toggle script to prevent errors.
+
+
   </script>
 </body>
 </html>
